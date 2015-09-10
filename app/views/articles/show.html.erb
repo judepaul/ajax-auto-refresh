@@ -1,0 +1,38 @@
+<h1>Article Details</h1>
+<p style='height:10px;'></p>
+<p id="notice"><%= notice %></p>
+  <%= hidden_field_tag :article_id, params[:id] %>
+<p style='padding-left:20px;'>
+  <strong>Name:</strong>
+  <%= @article.name %>
+</p>
+
+<p style='padding-left:20px;'>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+
+<p style='padding-left:20px;'>
+  <strong>Publisher:</strong>
+  <%= @article.publisher %>
+</p>
+
+<p style='padding-left:20px;'>
+<strong>Comments<br/>(you can find updates in every 1min.)</strong>
+<div id='comment_div' style='padding-left:40px;'>
+	<% @article.comments.each_with_index do |comment, indx|  %>
+		<p>
+		<%= indx+1 %>. <%= comment.desc %></p>
+	<% end %>
+</div>
+	
+</p>
+
+<br/>
+<br/>
+
+<p>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %> |
+<%= link_to 'Add comments', new_comment_path(@comment, id: @article.id) %>
+</p>

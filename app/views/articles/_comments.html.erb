@@ -1,0 +1,9 @@
+<% if @comments.empty? %>
+	<%=params[:msg]%>
+<% else %>
+	<% @comments.each_with_index do |comment, indx| %>
+		<p><%= indx+1 %>. <%= comment.desc %></p>
+	<% end %>
+<% end %>
+
+
